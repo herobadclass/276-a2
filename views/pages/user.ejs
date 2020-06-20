@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+    p{
+      display: inline-block;
+      Width:50px;
+      text-align: left;
+    }
+  </style>
+
+  <body>
+    <% rows.forEach(function(r) { %>
+      <button type="button" name="viewdb" onclick = "location.href='/database'">VIEW DATABASE</button>
+      <button type="button" name="edituser" onclick="toggledisabled()">EDIT USER</button>
+      <form name="userdata" action="" method="post">
+        <p>Id:</p>
+        <input type="text" name="id" value="<%= r.id %>" placeholder="Id" class="toggle" disabled readonly>
+        <br>
+
+        <p>Name:</p>
+        <input type="text" name="name" value="<%= r.name %>" placeholder="Name" class="toggle" disabled>
+        <br>
+
+        <p>Width:</p>
+        <input type="number" name="width" value="<%= r.width %>" placeholder="Width" class="toggle" disabled>
+        <br>
+
+        <p>Height:</p>
+        <input type="number" name="height" value="<%= r.height %>" placeholder="Height" class="toggle" disabled>
+        <br>
+
+        <p>Type:</p>
+        <select id="typeselect" name="type" value="<%= r.type %>" placeholder="Type" class="toggle <%= r.type %>" disabled>
+          <option value="A">A</option>
+          <option value="EE">EE</option>
+        </select>
+        <br>
+      </form>
+      <button type="button" name="edituser" onclick="edituser()" class="toggle" disabled>SAVE CHANGES</button>
+      <button type="button" name="deluser" onclick="deluser()" class="toggle" disabled>DELETE USER</button>
+    <% }); %>
+  </body>
+  <script>
+    function toggledisabled() {
+      field = document.getElementsByClassName("toggle")
+      for (var i = 0; i < field.length; i++) {
+        if (field[i].disabled == true) {
+          field[i].disabled = false
+        }
+        else {
+          field[i].disabled = true
+        }
+      }
+    }
+    function edituser() {
+      document.userdata.action = "/edituser"
+      document.userdata.submit()
+    }
+    function deluser() {
+      document.userdata.action = "/deluser"
+      document.userdata.submit()
+    }
+    var typeselect = document.getElementById('typeselect')
+    for (var i = 0; i < typeselect.options.length; i++) {
+      if (typeselect.options[i].value == typeselect.classList[1]){
+        typeselect.selectedIndex = i
+        break
+      }
+    }
+  </script>
+</html>
