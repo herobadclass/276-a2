@@ -16,7 +16,7 @@ express()
 
   .get('/', (req, res) => res.render('pages/index'))
   .get('/database', (req,res) => {
-    var getUserQuery = 'SELECT * FROM users'
+    var getUserQuery = 'SELECT * FROM Person'
     pool.query(getUserQuery, (error, result) => {
       if (error) {
         console.log(error);
@@ -28,7 +28,7 @@ express()
   .get('/adduser', (req, res) => res.render('pages/adduser'))
   .get('/user/:id', (req, res) =>{
     var id = req.params.id
-    var getUserQuery = `SELECT * FROM users WHERE id = ${id}`
+    var getUserQuery = `SELECT * FROM Person WHERE id = ${id}`
     pool.query(getUserQuery , (error,result) =>{
       if (error) {
         console.log(error);
@@ -43,7 +43,7 @@ express()
     var height = req.body.height
     var type = req.body.type
     var addUserQuery = {
-      text: `INSERT INTO users (name,width,height,type) VALUES ($1,$2,$3,$4)`,
+      text: `INSERT INTO Person (name,width,height,type) VALUES ($1,$2,$3,$4)`,
       values: [name, width, height, type]
     }
     pool.query(addUserQuery, (error,result) => {
@@ -60,7 +60,7 @@ express()
     var height = req.body.height
     var type = req.body.type
     var editUserQuery = {
-      text: `UPDATE users SET name=$1, width=$2, height=$3, type=$4 WHERE id=$5`,
+      text: `UPDATE Person SET name=$1, width=$2, height=$3, type=$4 WHERE id=$5`,
       values: [name, width, height, type, id]
     }
     pool.query(editUserQuery, (error,result) => {
@@ -73,7 +73,7 @@ express()
   .post('/deluser', (req, res) => {
     var id = req.body.id
     var delUserQuery = {
-      text: `DELETE FROM users WHERE id=$1`,
+      text: `DELETE FROM Person WHERE id=$1`,
       values: [id]
     }
     pool.query(delUserQuery, (error,result) => {
