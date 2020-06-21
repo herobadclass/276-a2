@@ -11,30 +11,25 @@
       text-align: left;
     }
   </style>
-
   <body>
     <% rows.forEach(function(r) { %>
       <button type="button" name="viewdb" onclick = "location.href='/database'">VIEW DATABASE</button>
       <button type="button" name="edituser" onclick="toggledisabled()">EDIT USER</button>
       <form name="userdata" action="" method="post">
         <p>Id:</p>
-        <input type="text" name="id" value="<%= r.id %>" placeholder="Id" class="toggle" disabled readonly>
+        <input type="text" name="id" value="<%= r.id %>" placeholder="" class="toggle" disabled readonly>
         <br>
-
         <p>Name:</p>
-        <input type="text" name="name" value="<%= r.name %>" placeholder="Name" class="toggle" disabled>
+        <input type="text" name="name" value="<%= r.name %>" placeholder="" class="toggle" disabled>
         <br>
-
         <p>Width:</p>
-        <input type="number" name="width" value="<%= r.width %>" placeholder="Width" class="toggle" disabled>
+        <input type="number" name="width" value="<%= r.width %>" placeholder="" class="toggle" disabled>
         <br>
-
         <p>Height:</p>
-        <input type="number" name="height" value="<%= r.height %>" placeholder="Height" class="toggle" disabled>
+        <input type="number" name="height" value="<%= r.height %>" placeholder="" class="toggle" disabled>
         <br>
-
         <p>Type:</p>
-        <select id="typeselect" name="type" value="<%= r.type %>" placeholder="Type" class="toggle <%= r.type %>" disabled>
+        <select id="typeselect" name="type" value="<%= r.type %>" placeholder="" class="toggle <%= r.type %>" disabled>
           <option value="A">A</option>
           <option value="EE">EE</option>
         </select>

@@ -4,16 +4,31 @@
     <meta charset="utf-8">
     <title></title>
   </head>
+  <style media="screen">
+    p{
+      display: inline-block;
+      Width:50px;
+      text-align: left;
+    }
+  </style>
   <body>
     <button type="button" name="viewdb" onclick = "location.href='/database'">VIEW DATABASE</button>
     <form name="adduser" action="/adduser" method="post">
-      <input type="text" name="name" value="" placeholder="Name">
-      <input type="number" name="width" value="" placeholder="Width">
-      <input type="number" name="height" value="" placeholder="Height">
+      <p>Name</p>
+      <input type="text" name="name" value="" placeholder="">
+      <br>
+      <p>Width</p>
+      <input type="number" name="width" value="" placeholder="">
+      <br>
+      <p>Height</p>
+      <input type="number" name="height" value="" placeholder="">
+      <br>
+      <p>Type</p>
       <select name="type" placeholder="Type">
         <option value="A">A</option>
         <option value="EE">EE</option>
       </select>
+      <br>
       <input type="submit" name="submit" value="ADD">
     </form>
   </body>
