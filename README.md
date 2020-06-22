@@ -1,3 +1,9 @@
+# assignment 2
+
+to view detailed information about a user, click on the user in /database
+
+no user feedback for successful/failed add user
+
 # node-js-getting-started
 
 A barebones Node.js app using [Express 4](http://expressjs.com/).
